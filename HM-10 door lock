@@ -1,0 +1,41 @@
+
+
+void setup() { //setup code
+
+pinMode(11,OUTPUT); //sets Dpin 11 to output
+
+pinMode(10,OUTPUT); //sets Dpin 10 to output
+
+Serial.begin(9600); //begins the serial connection
+
+
+}
+
+void loop() { //loop code
+  while(Serial.available()){  //looks for data to read
+	char getData = Serial.read();  //if there is, read it (this one is just used for clearing the buffer)
+
+	       
+
+
+  }
+  if (Serial.available()){ //looks for data to read
+Serial.read(); //if there is, read it (used for code below)
+
+  }
+  
+if (Serial.read()>0){ //if the value of the port is above zero (state change)
+Serial.println("unlock"); //write "unlock"
+digitalWrite(10,HIGH); //activate Dpin 10
+delay(2000); //sustain for 2 seconds
+Serial.println("lock"); //write "lock"
+digitalWrite(10,LOW); //set Dpin 10 to low (acts as gnd)
+digitalWrite(11,HIGH); //activate Dpin 11
+delay(2000); //sustain for 2 seconds
+digitalWrite(11,LOW); //turn off Dpin 11 (set to gnd)
+
+
+}
+  
+
+}
